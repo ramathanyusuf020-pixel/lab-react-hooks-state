@@ -4,33 +4,54 @@ import DarkModeToggle from './components/DarkModeToggle'
 import Cart from './components/Cart'
 
 const App = () => {
-  // TODO: Implement state for dark mode toggle
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [cartItems, setCartItems] = useState([])
 
-  // TODO: Implement state for cart management
-
-  // TODO: Implement state for category filtering
+  const addToCart = (product) => {
+    setCartItems((items) => [...items, product])
+  }
 
   return (
-    <div>
-      <h1>🛒 Shopping App</h1>
-      <p>
-        Welcome! Your task is to implement filtering, cart management, and dark
-        mode.
-      </p>
+    <div className={`app-shell${isDarkMode ? ' dark-mode' : ''}`}>
+      <header className="app-header">
+        <div>
+          <p className="eyebrow">FRESH PICKS, EVERY DAY</p>
+          <h1>Market Basket</h1>
+        </div>
+        <DarkModeToggle
+          isDarkMode={isDarkMode}
+          onToggle={() => setIsDarkMode((darkMode) => !darkMode)}
+        />
+      </header>
 
-      {/* TODO: Render DarkModeToggle and implement dark mode functionality */}
+      <main className="shopping-layout">
+        <section className="products-section" aria-labelledby="products-heading">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">THE MARKET</p>
+              <h2 id="products-heading">Available Products</h2>
+            </div>
+            <label className="filter-control">
+              <span>Category</span>
+              <select
+                value={selectedCategory}
+                onChange={(event) => setSelectedCategory(event.target.value)}
+              >
+                <option value="all">All categories</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Dairy">Dairy</option>
+              </select>
+            </label>
+          </div>
+          <ProductList
+            selectedCategory={selectedCategory}
+            onAddToCart={addToCart}
+          />
+        </section>
 
-      {/* TODO: Implement category filter dropdown */}
-      <label>Filter by Category: </label>
-      <select>
-        <option value="all">All</option>
-        <option value="Fruits">Fruits</option>
-        <option value="Dairy">Dairy</option>
-      </select>
-
-      <ProductList />
-
-      {/* TODO: Implement and render Cart component */}
+        <Cart items={cartItems} />
+      </main>
     </div>
   )
 }

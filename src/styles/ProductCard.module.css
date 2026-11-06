@@ -1,5 +1,75 @@
-/* TODO (optional): Style the product card container */
+.card {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 18px;
+	border: 1px solid var(--line);
+	background: var(--surface);
+}
 
-/* TODO (optional): Add special styling for out-of-stock products */
+.productMark {
+	display: grid;
+	width: 38px;
+	aspect-ratio: 1;
+	margin-bottom: 15px;
+	place-items: center;
+	border-radius: 50%;
+	color: #fff;
+	background: #d27c45;
+	font-size: 11px;
+	font-weight: 700;
+}
 
-/* TODO (optional): Style the add/remove button */
+.outOfStock .productMark {
+	background: #647d70;
+}
+
+.productDetails {
+	width: 100%;
+}
+
+.category {
+	margin: 0 0 3px;
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.productDetails h3 {
+	margin: 0;
+	font-family: 'Playfair Display', Georgia, serif;
+	font-size: 21px;
+}
+
+.price {
+	margin: 7px 0 0;
+	color: var(--ink);
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.stockStatus {
+	margin: 5px 0 14px;
+	color: var(--muted);
+	font-size: 12px;
+}
+
+.addButton {
+	width: 100%;
+	min-height: 38px;
+	margin-top: auto;
+	border: 0;
+	border-radius: 3px;
+	color: #fff;
+	background: var(--accent);
+	font-size: 13px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.addButton:hover {
+	background: var(--accent-hover);
+	color: #fff;
+}

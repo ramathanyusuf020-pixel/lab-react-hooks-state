@@ -1,10 +1,15 @@
 import React from 'react'
 
-const DarkModeToggle = () => {
-  // TODO: Implement dark mode toggle logic
-
+const DarkModeToggle = ({ isDarkMode = false, onToggle = () => {} }) => {
   return (
-    <button>Toggle Dark Mode {/* TODO: Update this text from Dark to Light dynamically */}</button>
+    <button
+      className="theme-toggle"
+      type="button"
+      aria-pressed={isDarkMode}
+      onClick={onToggle}
+    >
+      Toggle {isDarkMode ? 'Light' : 'Dark'} Mode
+    </button>
   )
 }
 
